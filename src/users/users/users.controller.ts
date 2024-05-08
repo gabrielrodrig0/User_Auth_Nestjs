@@ -5,7 +5,7 @@ import { LoginDto } from 'dto/login.dto';
 import { UserResponseType } from '../types/userResponse.type';
 import { ExpressRequest } from '../middlewares/auth.middleware';
 
-@Controller('users')
+@Controller('')
 export class UsersController {
     
     constructor(private userService:UserService){}
