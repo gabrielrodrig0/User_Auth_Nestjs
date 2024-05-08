@@ -9,7 +9,7 @@ import {compare} from 'bcrypt'
 import { sign } from 'jsonwebtoken';
 
 @Injectable()
-export class UsersService {
+export class UserService {
     constructor(@InjectModel(UserEntity.name) private userModel:Model<UserEntity>){}
 
     async createUser(createUserDto:CreateUserDto):Promise<UserEntity>

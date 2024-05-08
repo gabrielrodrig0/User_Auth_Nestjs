@@ -1,6 +1,6 @@
 import { Body, Controller, Post, Request, Get, HttpException, HttpStatus } from '@nestjs/common';
 import { CreateUserDto } from 'dto/createUser.dto';
-import { UsersService } from './users.service';
+import { UserService } from './users.service';
 import { LoginDto } from 'dto/login.dto';
 import { UserResponseType } from '../types/userResponse.type';
 import { ExpressRequest } from '../middlewares/auth.middleware';
@@ -8,7 +8,7 @@ import { ExpressRequest } from '../middlewares/auth.middleware';
 @Controller('users')
 export class UsersController {
     
-    constructor(private userService:UsersService){}
+    constructor(private userService:UserService){}
 
     @Post()
     async create(@Body() createUserDto: CreateUserDto): Promise<UserResponseType> 

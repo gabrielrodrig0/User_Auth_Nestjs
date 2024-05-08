@@ -1,7 +1,7 @@
 import { Injectable, NestMiddleware } from "@nestjs/common";
 import { UserEntity } from "entities/UserEntity";
 import { NextFunction, Request, Response } from "express";
-import { UsersService } from "../users/users.service";
+import { UserService } from "../users/users.service";
 import { verify } from "jsonwebtoken";
 
 export interface ExpressRequest extends Request 
@@ -12,7 +12,7 @@ export interface ExpressRequest extends Request
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
 
-    constructor (private userService:UsersService){}
+    constructor (private userService:UserService){}
 
     async use(req:ExpressRequest, res:Response, next:NextFunction)
     {
@@ -20,7 +20,7 @@ export class AuthMiddleware implements NestMiddleware {
         {
             req.user = null
             next();
-            return
+            return;
         }
 
         const token = req.headers['authorization'].split(' ')[1]
@@ -33,7 +33,7 @@ export class AuthMiddleware implements NestMiddleware {
         }
         catch(err)
         {
-            req.user=null
+            req.user=null;
             next();
         }
     }
