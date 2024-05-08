@@ -63,4 +63,9 @@ export class UsersService {
         return sign({email: userEntity.email}, 'Botafogo');
     }
 
+    async findByEmail(email:string): Promise<UserEntity>
+    {
+        return this.userModel.findOne({email})
+    }
+
 }
